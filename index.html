@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Randome Quote Generator the Project 1 for FCC</title>
+        <script src="quotes.js"></script>
+        <script>
+            //const QUOTEBANK = [
+               // {
+               //     quote:  "'上善若水，水善利万物而不争'",
+               //     author: "老子"
+               // }, {
+               //     quote:  "'慎终如始，则无败事。'",
+               //     author: "老子"
+               // }, {
+               //     quote:  "'知人者智，自知者明。胜人者有力，自胜者强'",
+               //     author: "老子"
+               // }, {
+               //     quote:  "'人之患，在好为人师'",
+               //     author: "孟子"
+               // }, {
+               //     quote:  "'无为其所不为，无欲其所不欲'",
+               //     author: "孟子"
+               // }, {
+               //     quote:  "'人生天地之间，若白驹之过隙，忽然而已'",
+               //     author: "庄子"
+               // }, {
+               //     quote:  "'井蛙不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也'",
+               //     author: "庄子"
+               // }, {
+               //     quote:  "'不患人之不已知，患不知人也'",
+               //     author: "孔子"
+               // }, {
+               //     quote:  "'知者乐水，仁者乐山。知者动，仁者静，知者乐，仁者寿'",
+               //     author: "孔子"
+               // }
+            //];
+
+            window.onload  = unit;
+            function unit() {
+                generateQuote()
+            }
+            function generateQuote() {
+                let quoteSize = QUOTEBANK.length;
+                let randomIndex = Math.floor(Math.random() * quoteSize);
+                let randomQuoteData = QUOTEBANK[randomIndex];
+                let twitterLink = "https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&amp;text="
+                
+                //Add The Quote
+                let quoteInApiFormat = randomQuoteData.quote.replace(/ /g, "%20");
+                twitterLink += quoteInApiFormat
+                //Add The Author
+                let authorInApiFormat = randomQuoteData.author.replace(/ /g, "%20");
+                twitterLink += " - " + authorInApiFormat
+                
+
+                document.getElementById("tweet-quote").href = twitterLink;
+                document.getElementById("text").innerText = randomQuoteData.quote;
+                document.getElementById("author").innerText = randomQuoteData.author;
+            }
+            
+        </script>
+        
+    </head>
+    <body>
+        <div class="container">
+          <div class="row py-3">
+            <div class="col-md-6 offset-md-3">
+            <wrapper id="quote-box">
+                <div class="card">
+                    <div class="card-header text-center">
+                        Random Quote Machine
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <div id="text"></div>
+                      </h5>
+                      <p class="card-text mx-auto"> <div id="author"></div> </p>
+                    </div>
+                        <button id="new-quote" onClick="generateQuote()" class="btn btn-block btn-success">New Quote</button>
+                        <a href="#" id="tweet-quote" target="_blank" class="btn btn-primary">Tweet Quote</a>
+                    </div>
+            </wrapper>
+            </div>
+          </div>
+        </div>
+       
+        <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    </body>
+
+</html>
